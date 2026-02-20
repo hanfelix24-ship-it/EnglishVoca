@@ -13,7 +13,13 @@
         <!-- 시작 화면 -->
         <div id="start-screen" class="screen active">
             <h1>영어 단어 퀴즈</h1>
-            <p>50개의 단어에 도전해보세요!</p>
+            <p>총 <span id="total-words">0</span>개의 단어가 준비되어 있습니다.</p>
+            <div class="range-box">
+                <input type="number" id="start-range" placeholder="시작 번호" min="1">
+                <span> ~ </span>
+                <input type="number" id="end-range" placeholder="끝 번호">
+            </div>
+            <p class="small-text">구간을 입력하지 않으면 전체에서 50개가 출제됩니다.</p>
             <button onclick="startGame()">게임 시작</button>
         </div>
 
@@ -28,15 +34,11 @@
                 <div id="feedback-icon" class="emoji">😐</div>
                 <h2 id="english-word">Apple</h2>
                 
-                <div id="hint-area" class="hidden">
-                    <p id="hint-text">예문이 여기에 나옵니다.</p>
-                </div>
-
                 <input type="text" id="user-input" placeholder="뜻을 입력하세요 (예: 사과)" autocomplete="off">
                 
                 <div class="buttons">
                     <button onclick="checkAnswer()" class="btn-primary">정답 확인</button>
-                    <button onclick="showHint()" class="btn-secondary">힌트 보기 💡</button>
+                    <button onclick="startVoiceInput()" class="btn-mic">마이크로 말하기 🎤</button>
                 </div>
             </div>
         </div>

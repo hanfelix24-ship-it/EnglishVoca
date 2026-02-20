@@ -30,6 +30,20 @@ body {
 h1 { color: #333; }
 h2 { font-size: 2.5rem; margin: 10px 0; color: #2c3e50; }
 
+.range-box {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-box input {
+    width: 80px;
+    margin: 0;
+    padding: 8px;
+}
+
 .emoji {
     font-size: 4rem;
     margin: 10px 0;
@@ -62,7 +76,7 @@ button {
 }
 
 .btn-primary { background-color: #4CAF50; color: white; }
-.btn-secondary { background-color: #FF9800; color: white; }
+.btn-mic { background-color: #3498db; color: white; }
 button:hover { opacity: 0.9; }
 
 .status-bar {
@@ -71,14 +85,6 @@ button:hover { opacity: 0.9; }
     margin-bottom: 20px;
     color: #666;
     font-size: 0.9rem;
-}
-
-#hint-area {
-    background-color: #fff3cd;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px 0;
-    color: #856404;
 }
 
 .hidden { display: none; }
