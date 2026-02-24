@@ -276,7 +276,7 @@ const wordDatabase = [
   { id: 722, word: "link", meaning: "연결하다" },
   { id: 723, word: "locate", meaning: "위치를 찾다" },
   { id: 724, word: "mammal", meaning: "포유류" },
-  { id: 725, word: "management", meaning: "관리" }
+  { id: 725, word: "management", meaning: "관리" },
   { id: 726, word: "manufacturer", meaning: "제조업자, 제조회사" },
   { id: 727, word: "mature", meaning: "어른스러운, 성숙한" },
   { id: 728, word: "mean", meaning: "1. 의미하다 2. 사악한" },
