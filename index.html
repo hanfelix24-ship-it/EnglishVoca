@@ -9,19 +9,34 @@
 </head>
 <body>
 
-    <div class="container">
-        <!-- 시작 화면 -->
-        <div id="start-screen" class="screen active">
-            <h1>영어 단어 퀴즈</h1>
-            <p>총 <span id="total-words">0</span>개의 단어가 준비되어 있습니다.</p>
-            <div class="range-box">
-                <input type="number" id="start-range" placeholder="시작 번호" min="1">
-                <span> ~ </span>
-                <input type="number" id="end-range" placeholder="끝 번호">
-            </div>
-            <p class="small-text">구간을 입력하지 않으면 전체에서 50개가 출제됩니다.</p>
-            <button onclick="startGame()">게임 시작</button>
-        </div>
+    <div id="start-screen" class="screen active">
+    <h1>영어 단어 맞추기</h1>
+
+    <!-- 단어장 선택 UI -->
+    <div id="wordbook-selection" style="margin-bottom: 1rem;">
+        <strong>단어장 선택:</strong>
+        <label>
+            <input type="radio" name="wordbook" value="jiseong">
+            지성이 단어장
+        </label>
+        <label>
+            <input type="radio" name="wordbook" value="soyeon">
+            소연이 단어장
+        </label>
+    </div>
+
+    <p>
+        총 <span id="total-words"></span>개 단어
+        <span id="word-range-info" style="font-size: 0.9em; color: #555;"></span>
+    </p>
+
+    <div>
+        <input type="number" id="start-range" placeholder="시작 ID">
+        <input type="number" id="end-range" placeholder="끝 ID">
+    </div>
+    <button onclick="startGame()">게임 시작</button>
+</div>
+
 
         <!-- 게임 화면 -->
         <div id="game-screen" class="screen">
