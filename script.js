@@ -1,7 +1,8 @@
 // script.js
 
 // 1. 단어 데이터 (여기에 원하는 단어를 50개 이상 채워넣으세요)
-const wordDatabase = [
+// '지성이 단어장' 데이터
+const wordDatabaseJiseong = [
   { id: 451, word: "tough", meaning: "힘든, 곤란한" },
   { id: 452, word: "trade", meaning: "교환하다, 거래하다" },
   { id: 453, word: "traditional", meaning: "전통적인" },
@@ -815,20 +816,166 @@ const wordDatabase = [
 { id: 1261, word: "commitment", meaning: "1. 헌신 2. 약속" },
 { id: 1262, word: "common", meaning: "흔한, 공통된" }
     // ... 실제 사용 시에는 여기에 단어를 더 추가해서 50개를 만드세요.
-    // 테스트를 위해 데이터를 복제하여 50개로 늘립니다.
 ];
 
-// 데이터가 부족할 경우를 대비해 더미 데이터로 채움 (실제 배포시 제거 가능)
-while (wordDatabase.length < 100) {
-    const nextId = wordDatabase.length + 1;
-    wordDatabase.push({ 
-        id: nextId,
-        word: `Word${nextId}`, 
-        meaning: "테스트"
-    });
-}
+// '소연이 단어장' 데이터 (요구사항에 맞게 단어를 추가/수정하세요)
+const wordDatabaseSoyeon = [
+  { id: 1, word: "A and B alike", meaning: "A와 B 둘 다" },
+  { id: 2, word: "A as well as B", meaning: "B뿐만 아니라 A도" },
+  { id: 3, word: "a bit / a bit of N", meaning: "약간, 조금 / 약간의 N" },
+  { id: 4, word: "a degree of N", meaning: "어느 정도의 N" },
+  { id: 5, word: "a great deal of", meaning: "다량의, 많은" },
+  { id: 6, word: "A have (a lot) to do with B", meaning: "A는 B와 관련이 (많이) 있다" },
+  { id: 7, word: "A have nothing to do with B", meaning: "A는 B와 관련이 전혀 없다" },
+  { id: 8, word: "a must", meaning: "필수품, 의무" },
+  { id: 9, word: "a number of Ns", meaning: "많은 N들" },
+  { id: 10, word: "A outnumber B", meaning: "A는 B보다 수가 많다" },
+  { id: 11, word: "a range of Ns", meaning: "다양한 N들" },
+  { id: 12, word: "a spirit of community", meaning: "공동체 의식" },
+  { id: 13, word: "a third", meaning: "3분의 1" },
+  { id: 14, word: "a variety of Ns", meaning: "다양한 N들" },
+  { id: 15, word: "abandon", meaning: "버리다" },
+  { id: 16, word: "ability", meaning: "능력" },
+  { id: 17, word: "abnormal", meaning: "비정상적인" },
+  { id: 18, word: "aboard", meaning: "탑승한" },
+  { id: 19, word: "above all", meaning: "무엇보다도" },
+  { id: 20, word: "above N", meaning: "N 위에" },
+  { id: 21, word: "abroad", meaning: "외국에" },
+  { id: 22, word: "absence", meaning: "부재" },
+  { id: 23, word: "absent", meaning: "아무 생각 없는, 멍한" },
+  { id: 24, word: "absolute", meaning: "절대적인 (변하지 않는, 세상 하나라는 의미)" },
+  { id: 25, word: "absorb", meaning: "흡수하다" },
+  { id: 26, word: "absorption", meaning: "흡수" },
+  { id: 27, word: "abstract", meaning: "추상적인" },
+  { id: 28, word: "abundance", meaning: "풍족함" },
+  { id: 29, word: "abundant", meaning: "풍부한" },
+  { id: 30, word: "abuse", meaning: "남용, 학대; 남용[오용]하다, 학대하다" },
+  { id: 31, word: "academic", meaning: "학업의" },
+  { id: 32, word: "academic performance", meaning: "학업 성적" },
+  { id: 33, word: "academy", meaning: "학문기관 (학원, 학교 등)" },
+  { id: 34, word: "accelerated", meaning: "가속화된, 앞당겨진" },
+  { id: 35, word: "acceleration", meaning: "가속화" },
+  { id: 36, word: "accent", meaning: "1. 강세, 억양 2. 사투리 3. 강조하다" },
+  { id: 37, word: "accept", meaning: "받아들이다, 수락하다" },
+  { id: 38, word: "acceptable", meaning: "받아들여질 수 있는" },
+  { id: 39, word: "acceptance", meaning: "수용, 받아들임" },
+  { id: 40, word: "access", meaning: "접근" },
+  { id: 41, word: "accessibility", meaning: "접근성" },
+  { id: 42, word: "accessible", meaning: "접근하기 쉬운" },
+  { id: 43, word: "accident", meaning: "사고, 우연" },
+  { id: 44, word: "accidentally", meaning: "우연히" },
+  { id: 45, word: "acclaimed", meaning: "칭송받는" },
+  { id: 46, word: "accommodate", meaning: "수용하다" },
+  { id: 47, word: "accommodation", meaning: "숙박" },
+  { id: 48, word: "accompany", meaning: "동반하다, 동행하다" },
+  { id: 49, word: "accomplish", meaning: "성취하다" },
+  { id: 50, word: "accomplish / achieve", meaning: "성취하다" },
+  { id: 51, word: "accomplished", meaning: "성공한" },
+  { id: 52, word: "accomplishment", meaning: "성과" },
+  { id: 53, word: "accord", meaning: "v. 일치하다, 부여하다 n. 일치, 합의" },
+  { id: 54, word: "according to", meaning: "~에 따르면" },
+  { id: 55, word: "accordingly", meaning: "따라서" },
+  { id: 56, word: "account", meaning: "1. 설명 2. 계좌" },
+  { id: 57, word: "account for N", meaning: "1. (비율을) 차지하다 2. 설명하다" },
+  { id: 58, word: "accountant", meaning: "회계사" },
+  { id: 59, word: "accumulate", meaning: "축적하다" },
+  { id: 60, word: "accumulation", meaning: "축적" },
+  { id: 61, word: "accuracy", meaning: "정확성" },
+  { id: 62, word: "accurate", meaning: "정확한" },
+  { id: 63, word: "accurately", meaning: "정확하게" },
+  { id: 64, word: "accusation", meaning: "비난; 고발, 기소" },
+  { id: 65, word: "ache", meaning: "아프다" },
+  { id: 66, word: "achieve", meaning: "성취하다" },
+  { id: 67, word: "achievement", meaning: "성취" },
+  { id: 68, word: "acid", meaning: "산성의, 신맛이 나는 / 산" },
+  { id: 69, word: "acknowledge", meaning: "인정하다, 승인하다" },
+  { id: 70, word: "acne", meaning: "여드름" },
+  { id: 71, word: "acoustic", meaning: "소리의, 음향의 / 청각의" },
+  { id: 72, word: "acquire", meaning: "얻다, 습득하다" },
+  { id: 73, word: "acquisition", meaning: "습득" },
+  { id: 74, word: "across N", meaning: "1. N을 건너서, 넘어서 2. N의 전반에" },
+  { id: 75, word: "act", meaning: "1. 행동하다 2. 연기하다 3. 작용하다" },
+  { id: 76, word: "action", meaning: "1. 행동 2. 조치" },
+  { id: 77, word: "activate", meaning: "활성화시키다" },
+  { id: 78, word: "active", meaning: "적극적인, 활동중인" },
+  { id: 79, word: "activist", meaning: "활동가" },
+  { id: 80, word: "activity", meaning: "활동" },
+  { id: 81, word: "actor", meaning: "배우" },
+  { id: 82, word: "actual", meaning: "실제의, 사실상의" },
+  { id: 83, word: "actually", meaning: "실제로" },
+  { id: 84, word: "ad", meaning: "광고" },
+  { id: 85, word: "adapt", meaning: "적응하다, 맞추다" },
+  { id: 86, word: "adaptation", meaning: "조정, 적응" },
+  { id: 87, word: "add", meaning: "더하다, 추가하다" },
+  { id: 88, word: "addict", meaning: "중독시키다, 중독자" },
+  { id: 89, word: "addiction", meaning: "중독" },
+  { id: 90, word: "additional", meaning: "추가적인, 부수적인" },
+  { id: 91, word: "additionally", meaning: "게다가, 또한, 더군다나" },
+  { id: 92, word: "address", meaning: "1. 주소 2. 연설하다, 말하다 3. 다루다" },
+  { id: 93, word: "adequate", meaning: "적절한" },
+  { id: 94, word: "adequately", meaning: "적절하게" },
+  { id: 95, word: "adjust", meaning: "조정하다, 조절하다" },
+  { id: 96, word: "adjustment", meaning: "조정" },
+  { id: 97, word: "admire", meaning: "칭찬하다, 감탄하다" },
+  { id: 98, word: "admission", meaning: "1. 인정, 시인 2. 허가 3. 입장료" },
+  { id: 99, word: "admit", meaning: "1. (잘못, 사실 등) 인정하다 2. 허락하다" },
+  { id: 100, word: "adolescent", meaning: "청소년" },
+  { id: 101, word: "adopt", meaning: "1. 채택하다 2. 입양하다" },
+  { id: 102, word: "adorable", meaning: "사랑스러운" },
+  { id: 103, word: "adult", meaning: "성인" },
+  { id: 104, word: "adulthood", meaning: "성인기" },
+  { id: 105, word: "advance", meaning: "진보, 발전 / 나아가다" },
+  { id: 106, word: "advance notice", meaning: "사전 통보" },
+  { id: 107, word: "advanced", meaning: "진보적인, 앞선, 발전된" },
+  { id: 108, word: "advancement", meaning: "발전, 진보" },
+  { id: 109, word: "advantage", meaning: "이익" },
+  { id: 110, word: "advantageous", meaning: "이로운, 유리한" },
+  { id: 111, word: "adventurous", meaning: "모험적인, 위험이 많은" },
+  { id: 112, word: "adverb", meaning: "부사" },
+  { id: 113, word: "adversary", meaning: "상대, 적수" },
+  { id: 114, word: "advertise", meaning: "광고하다" },
+  { id: 115, word: "advertisement", meaning: "광고" },
+  { id: 116, word: "advice / advise", meaning: "조언 / 조언하다" },
+  { id: 117, word: "advisor", meaning: "조언자" },
+  { id: 118, word: "advocate", meaning: "1. 옹호하다 2. 옹호자, 변호사" },
+  { id: 119, word: "aerobic", meaning: "유산소의" },
+  { id: 120, word: "aeroplane", meaning: "비행기" },
+  { id: 121, word: "affair", meaning: "문제, 일, 행사" },
+  { id: 122, word: "affect N", meaning: "N에게 영향을 주다" },
+  { id: 123, word: "affective", meaning: "정서적인" },
+  { id: 124, word: "afford to V", meaning: "~할 여유가 있다" },
+  { id: 125, word: "affordable", meaning: "(금전적, 시간적) 여유가 되는" },
+  { id: 126, word: "after a while", meaning: "잠시 후" },
+  { id: 127, word: "after all", meaning: "결국" },
+  { id: 128, word: "afterward", meaning: "후에, 나중에" },
+  { id: 129, word: "against N", meaning: "N에 대항하여, 맞서서, 반대하여" },
+  { id: 130, word: "age group", meaning: "연령 집단" },
+  { id: 131, word: "agency, agent", meaning: "기관, 단체 / 대리인, 행위자" },
+  { id: 132, word: "aggression", meaning: "공격성" },
+  { id: 133, word: "aggressive", meaning: "공격적인" },
+  { id: 134, word: "aggressively", meaning: "공격적으로" },
+  { id: 135, word: "aging", meaning: "노화" },
+  { id: 136, word: "agree", meaning: "의견이 일치하다, 동의하다" },
+  { id: 137, word: "agreement", meaning: "의견일치, 동의" },
+  { id: 138, word: "agricultural", meaning: "농업의" },
+  { id: 139, word: "agriculture", meaning: "농업" },
+  { id: 140, word: "ahead", meaning: "미리" },
+  { id: 141, word: "ahead of N", meaning: "N 앞에" },
+  { id: 142, word: "aid", meaning: "1. 돕다 2. 도움" },
+  { id: 143, word: "aim", meaning: "1. 목표 2. 목표로 하다" },
+  { id: 144, word: "air", meaning: "1. 공기 2. 방송되다" },
+  { id: 145, word: "air conditioner", meaning: "에어컨" },
+  { id: 146, word: "aircraft", meaning: "항공기" },
+  { id: 147, word: "aircraft carrier", meaning: "항공모함" },
+  { id: 148, word: "airline", meaning: "항공사" },
+  { id: 149, word: "air-tight", meaning: "밀폐된" },
+  { id: 150, word: "alarm", meaning: "1. 놀라게 하다 2. 자명종, 경고신호" }
+];
+
+const wordbooks = { jiseong: wordDatabaseJiseong, soyeon: wordDatabaseSoyeon };
 
 // 게임 상태 변수
+let wordDatabase; // 현재 선택된 단어장
 let currentList = [];
 let wrongAnswers = [];
 let currentIndex = 0;
@@ -845,9 +992,37 @@ const feedbackIcon = document.getElementById('feedback-icon');
 const progressText = document.getElementById('progress-text');
 const scoreText = document.getElementById('score-text');
 const totalWordsSpan = document.getElementById('total-words');
+const wordRangeInfo = document.getElementById('word-range-info');
 
-// 초기화: 총 단어 수 표시
-totalWordsSpan.innerText = wordDatabase.length;
+// 초기화 함수: 페이지 로드 시 실행
+document.addEventListener('DOMContentLoaded', () => {
+    // HTML에 단어장 선택 라디오 버튼이 있다고 가정하고 이벤트 리스너를 추가합니다.
+    document.querySelectorAll('input[name="wordbook"]').forEach(radio => {
+        radio.addEventListener('change', (e) => switchWordbook(e.target.value));
+    });
+
+    // 기본값으로 '지성이 단어장'을 선택하고 정보를 표시합니다.
+    switchWordbook('jiseong');
+    // 라디오 버튼의 초기 선택 상태도 동기화합니다.
+    const defaultRadio = document.querySelector('input[name="wordbook"][value="jiseong"]');
+    if (defaultRadio) defaultRadio.checked = true;
+});
+
+// 단어장 전환 및 정보 업데이트 함수
+function switchWordbook(bookName) {
+    wordDatabase = wordbooks[bookName];
+
+    if (!wordDatabase || wordDatabase.length === 0) {
+        totalWordsSpan.innerText = '0';
+        if (wordRangeInfo) wordRangeInfo.innerText = '(단어 없음)';
+        return;
+    }
+
+    totalWordsSpan.innerText = wordDatabase.length;
+    const minId = wordDatabase[0].id;
+    const maxId = wordDatabase[wordDatabase.length - 1].id;
+    if (wordRangeInfo) wordRangeInfo.innerText = `(단어 ID 범위: ${minId} ~ ${maxId})`;
+}
 
 // 게임 시작
 function startGame() {
