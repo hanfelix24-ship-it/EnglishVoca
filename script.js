@@ -969,7 +969,7 @@ const wordDatabaseSoyeon = [
   { id: 147, word: "aircraft carrier", meaning: "항공모함" },
   { id: 148, word: "airline", meaning: "항공사" },
   { id: 149, word: "air-tight", meaning: "밀폐된" },
-  { id: 150, word: "alarm", meaning: "1. 놀라게 하다 2. 자명종, 경고신호" }
+  { id: 150, word: "alarm", meaning: "1. 놀라게 하다 2. 자명종, 경고신호" },
   { id: 151, word: "alarm call", meaning: "경고 신호, 경계 호출" },
 { id: 152, word: "alarm signal", meaning: "(위험에 대해 미리 알리는) 경고 신호" },
 { id: 153, word: "alchemist", meaning: "연금술사 (무에서 유를 창조하고자 흙을 금으로 바꾸는 걸 연구하던 사람)" },
