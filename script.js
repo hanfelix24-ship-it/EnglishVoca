@@ -1105,12 +1105,10 @@ function checkAnswer() {
 
     // 쉼표(,)로 구분된 뜻 중 하나라도 맞으면 정답 처리
     // 예: "대우, 취급, 치료" -> ["대우", "취급", "치료"]
-    const correctMeanings = currentWord.meaning.split(',').map(m => m.trim());
     // 띄어쓰기 무시를 위해 정답과 입력값 모두 공백 제거
     const userAnswerClean = userAnswer.replace(/\s+/g, '');
     const correctMeaningsClean = currentWord.meaning.split(',').map(m => m.trim().replace(/\s+/g, ''));
 
-    if (correctMeanings.includes(userAnswer)) {
     if (correctMeaningsClean.includes(userAnswerClean)) {
         // 정답: 칭찬 + 행복한 표정
         feedbackIcon.innerText = '😍';
@@ -1118,8 +1116,6 @@ function checkAnswer() {
         score++;
         setTimeout(nextWord, 1000); // 1초 뒤 다음 문제
     } else {
-        // 오답: 슬픈 표정 + 오답노트 추가
-        feedbackIcon.innerText = '😭';
         // 오답: 놀리는 표정
         feedbackIcon.innerText = '😜';
         feedbackIcon.classList.add('shake');
@@ -1131,8 +1127,6 @@ function checkAnswer() {
         if (!wrongAnswers.includes(currentWord)) {
             wrongAnswers.push(currentWord);
         }
-        setTimeout(nextWord, 1000);
-        setTimeout(nextWord, 3000); // 1초 뒤 다음 문제
         setTimeout(nextWord, 1000); // 1초 뒤 다음 문제
     }
 }
