@@ -981,6 +981,7 @@ let wrongAnswers = [];
 let currentIndex = 0;
 let score = 0;
 let isReviewMode = false;
+let startTime = 0; // 게임 시작 시간 기록
 
 // DOM 요소
 const startScreen = document.getElementById('start-screen');
@@ -1028,6 +1029,7 @@ function switchWordbook(bookName) {
 function startGame() {
     const startInput = document.getElementById('start-range').value;
     const endInput = document.getElementById('end-range').value;
+    const order = document.querySelector('input[name="order"]:checked')?.value || 'random'; // 순서 선택 확인
     let targetList = [];
 
     // 범위 입력 확인
@@ -1054,11 +1056,18 @@ function startGame() {
 
     // 선택된 리스트를 섞어서 게임 시작
     currentList = targetList.sort(() => Math.random() - 0.5);
+    if (order === 'random') {
+        currentList = targetList.sort(() => Math.random() - 0.5);
+    } else {
+        // 번호순 정렬 (id 기준 오름차순)
+        currentList = targetList.sort((a, b) => a.id - b.id);
+    }
 
     wrongAnswers = [];
     currentIndex = 0;
     score = 0;
     isReviewMode = false;
+    startTime = Date.now(); // 시작 시간 기록
     
     showScreen('game-screen');
     loadWord();
@@ -1097,8 +1106,12 @@ function checkAnswer() {
     // 쉼표(,)로 구분된 뜻 중 하나라도 맞으면 정답 처리
     // 예: "대우, 취급, 치료" -> ["대우", "취급", "치료"]
     const correctMeanings = currentWord.meaning.split(',').map(m => m.trim());
+    // 띄어쓰기 무시를 위해 정답과 입력값 모두 공백 제거
+    const userAnswerClean = userAnswer.replace(/\s+/g, '');
+    const correctMeaningsClean = currentWord.meaning.split(',').map(m => m.trim().replace(/\s+/g, ''));
 
     if (correctMeanings.includes(userAnswer)) {
+    if (correctMeaningsClean.includes(userAnswerClean)) {
         // 정답: 칭찬 + 행복한 표정
         feedbackIcon.innerText = '😍';
         feedbackIcon.classList.add('bounce');
@@ -1119,6 +1132,7 @@ function checkAnswer() {
             wrongAnswers.push(currentWord);
         }
         setTimeout(nextWord, 1000);
+        setTimeout(nextWord, 3000); // 1초 뒤 다음 문제
         setTimeout(nextWord, 1000); // 1초 뒤 다음 문제
     }
 }
@@ -1136,6 +1150,12 @@ function nextWord() {
 // 게임 종료
 function endGame() {
     showScreen('end-screen');
+    
+    // 총 걸린 시간 계산 및 표시
+    const endTime = Date.now();
+    const timeTaken = ((endTime - startTime) / 1000).toFixed(1); // 초 단위, 소수점 1자리
+    alert(`수고하셨습니다! 총 걸린 시간: ${timeTaken}초`);
+
     const resultMsg = document.getElementById('result-message');
     const reviewBtn = document.getElementById('review-btn');
     
@@ -1157,6 +1177,7 @@ function startReview() {
     currentIndex = 0;
     score = 0;
     isReviewMode = true;
+    startTime = Date.now(); // 리뷰 모드 시작 시간도 기록
     
     showScreen('game-screen');
     loadWord();
